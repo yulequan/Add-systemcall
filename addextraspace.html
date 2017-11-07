@@ -1,0 +1,376 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>1 Change the VM setting · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="check.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Outline
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="addextraspace.html">
+            
+                <a href="addextraspace.html">
+            
+                    
+                    1 Change the VM setting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="check.html">
+            
+                <a href="check.html">
+            
+                    
+                    2 Check current kernel version
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="downloadsource.html">
+            
+                <a href="downloadsource.html">
+            
+                    
+                    3 Down latest kernel source code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="define.html">
+            
+                <a href="define.html">
+            
+                    
+                    4 Defining our system call
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="modify.html">
+            
+                <a href="modify.html">
+            
+                    
+                    5 Modifying necessary kernel files
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="compile.html">
+            
+                <a href="compile.html">
+            
+                    
+                    6 Compile the kernel
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="test.html">
+            
+                <a href="test.html">
+            
+                    
+                    7 Testing the system call 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="reference.html">
+            
+                <a href="reference.html">
+            
+                    
+                    8 References
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >1 Change the VM setting</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="change-the-vm-setting">Change the VM setting</h1>
+<p>Adding a system call need to recompile the linux kernel from source. To have enough space to compile the kernel, we will add an extra disk into our VM.
+By the way, we also need to increase the CPU memory to sucessfully use the new kernel. I recommend you download a new image to do the following experiments. </p>
+<h2 id="add-extra-disk-in-the-virtualbox-setting">Add extra disk in the VirtualBox setting</h2>
+<ol>
+<li><p>Open the setting of our machine image. Select &quot;Storage&quot; item and next select &quot;Controller:SATA&quot; item.
+<img src="figs/set2.png" alt="set2"></p>
+</li>
+<li><p>Click right &quot;add&quot; button and create a disk file
+<img src="figs/set3.png" alt="set3"></p>
+</li>
+<li><p>Set the disk size to 20GB</p>
+</li>
+</ol>
+<p><img src="figs/set4.png" alt="set4"></p>
+<p>Now, the setting looks like </p>
+<p><img src="figs/set5.png" alt="Set5"></p>
+<p>Click &quot;OK&quot; and continue to mount this new disk in our linux VM. </p>
+<h2 id="partition">Partition</h2>
+<p>The easiest and user-friendly way is probably to use <code>gparted</code> to partition the new disk.</p>
+<p>Open the terminal and install it </p>
+<pre><code>sudo apt-get install gparted
+</code></pre><p>Start this tool</p>
+<pre><code>sudo gparted
+</code></pre><p>Select <code>/dev/sdb</code> and click &apos;Device&apos;--&gt;&apos;Create Partitio Table...&apos;. Use default setting and click &apos;Apply&apos;.</p>
+<p><img src="figs/set6.png" alt="set6"></p>
+<p>Click &apos;New&apos; button and create new partition.
+<img src="figs/set7.png" alt="set7"></p>
+<p>Apply all operations and exit. </p>
+<h2 id="mount">Mount</h2>
+<p>After you are done creating your partitions (most likely it will be just one ext4 data partition, since this is your additional storage drive), you need to permanently mount it.</p>
+<p>At this step you already know what names your new partition(-s) have. If not sure, following command will remind you about existing drives and partitions on them:</p>
+<pre><code>sudo fdisk -l
+</code></pre><p>Then create a new folder and try mounting it with </p>
+<pre><code>sudo mkdir /media/Newdisk
+sudo mount -t ext4 /dev/sdb1 /media/Newdisk
+sudo chown csci3150 csci3150 /media/Newdisk
+</code></pre><p>Then this new disk is mounted to &apos;/media/Newdisk&apos; and you can use <code>df -h</code> to show that. </p>
+<p><img src="figs/set8.png" alt="set8"></p>
+<p>Note: Everytime when you reboot the system, you need to re-mount this disk again. If you want to permanently mount it. You can refer <a href="https://askubuntu.com/questions/125257/how-do-i-add-an-additional-hard-drive" target="_blank">this link</a></p>
+<h2 id="increase-cpu-memory">Increase CPU memory</h2>
+<p>Open the setting of our VM image. Select &quot;System&quot; item and change the base Memory to 2048MB.</p>
+<p><img src="figs/memory.png" alt="set9"></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Outline">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="check.html" class="navigation navigation-next " aria-label="Next page: 2 Check current kernel version">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"1 Change the VM setting","level":"1.2","depth":1,"next":{"title":"2 Check current kernel version","level":"1.3","depth":1,"path":"check.md","ref":"check.md","articles":[]},"previous":{"title":"Outline","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"addextraspace.md","mtime":"2017-11-07T11:34:29.442Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-07T11:46:39.708Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

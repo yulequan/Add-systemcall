@@ -1,0 +1,365 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>5 Modifying necessary kernel files · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="compile.html" />
+    
+    
+    <link rel="prev" href="define.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Outline
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="addextraspace.html">
+            
+                <a href="addextraspace.html">
+            
+                    
+                    1 Change the VM setting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="check.html">
+            
+                <a href="check.html">
+            
+                    
+                    2 Check current kernel version
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="downloadsource.html">
+            
+                <a href="downloadsource.html">
+            
+                    
+                    3 Down latest kernel source code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="define.html">
+            
+                <a href="define.html">
+            
+                    
+                    4 Defining our system call
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6" data-path="modify.html">
+            
+                <a href="modify.html">
+            
+                    
+                    5 Modifying necessary kernel files
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="compile.html">
+            
+                <a href="compile.html">
+            
+                    
+                    6 Compile the kernel
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="test.html">
+            
+                <a href="test.html">
+            
+                    
+                    7 Testing the system call 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="reference.html">
+            
+                <a href="reference.html">
+            
+                    
+                    8 References
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >5 Modifying necessary kernel files</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="modifying-necessary-kernel-files-to-integrate-our-system-call">Modifying necessary kernel files to integrate our system call</h1>
+<h2 id="modify-makefile">Modify Makefile</h2>
+<p>First, we need to add the new &#x2018;<strong>info</strong>&#x2019; directory to the kernel&#x2019;s Makefile.</p>
+<p>Change back into the linux-4.13.11 folder and open Makefile</p>
+<p>Goto line number 944 which says: </p>
+<p><code>core-y  += kernel/ certs/ mm/ fs/ ipc/ security/ crypto/ block/</code></p>
+<p>and change it to </p>
+<p><code>core-y  += kernel/ certs/ mm/ fs/ ipc/ security/ crypto/ block/ info/</code></p>
+<p><img src="figs/makefile.png" alt="makefile"></p>
+<p>This tells the compiler that the source files of our new system call can be found in the <strong>info/</strong> directory.</p>
+<h2 id="modify-syscall32tbl">Modify syscall_32.tbl</h2>
+<p>Now, we&#x2019;ll have to alter the <strong>syscall_32.tbl</strong>.
+A neat way to figure out where this file is present is to use the <code>find</code> command on the terminal from the linux-4.13.11 directory.</p>
+<pre><code>find -name syscall_32.tbl   ### Should show the file&apos;s location
+</code></pre><p>(This is equivalent to using the find option(ctrl+F) in nautilus to look for where a specific file is located)</p>
+<p>In kernel 4.13.11, it is present in <strong>/arch/x86/entry/syscalls/syscall_32.tbl</strong>.</p>
+<p>Now, edit the file as shown to include the new system call number and its entry point. Just note the system call number for reference. (Ideally, we should be implementing a wrapper for our system call and will never be using the number directly. But, in this example, we will going to use the system call number to test the system call)</p>
+<p>The number of the system call should be one plus the number of the last system call (it was 385 in our case). </p>
+<pre><code>380    i386    pkey_mprotect        sys_pkey_mprotect
+381    i386    pkey_alloc        sys_pkey_alloc
+382    i386    pkey_free        sys_pkey_free
+383    i386    statx            sys_statx
+384    i386    arch_prctl        sys_arch_prctl            compat_sys_arch_prctl
+##############&lt; Make your edit here &gt;###################
+</code></pre><p><img src="figs/syscall_32.png" alt="syscall_tbl"></p>
+<h2 id="modify-syscallsh">Modify syscalls.h</h2>
+<p>Finally, we&#x2019;ll have to alter the <strong>syscalls.h</strong> file. Again, use <code>find</code> look for where the syscalls.h file is present.</p>
+<pre><code>find -name syscalls.h
+</code></pre><p>In kernel 4.13.11, it is found in <strong>/include/linux/</strong>.</p>
+<p>Add the following line to the end of the file (before the #endif) as shown:</p>
+<pre><code>asmlinkage long sys_listProcessInfo(void);
+</code></pre><p><img src="figs/syscalls.png" alt="syscall"></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="define.html" class="navigation navigation-prev " aria-label="Previous page: 4 Defining our system call">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="compile.html" class="navigation navigation-next " aria-label="Next page: 6 Compile the kernel">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"5 Modifying necessary kernel files","level":"1.6","depth":1,"next":{"title":"6 Compile the kernel","level":"1.7","depth":1,"path":"compile.md","ref":"compile.md","articles":[]},"previous":{"title":"4 Defining our system call","level":"1.5","depth":1,"path":"define.md","ref":"define.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"modify.md","mtime":"2017-11-07T06:36:42.591Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-07T11:46:39.708Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
