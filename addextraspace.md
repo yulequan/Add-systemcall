@@ -1,6 +1,6 @@
 # Change the VM setting
 
-Adding a system call need to recompile the linux kernel from source. Our VM doesn't have enough space to store the kernel source that we are going to download and the compiled files when we compiling, so let's add an extra disk into our VM first.
+Adding a system call need to recompile the linux kernel from source. Our VM doesn't have enough space to store the kernel source that we are going to download, and the compiled files when we compiling, so let's add an extra disk into our VM first.
 We also need to increase the CPU memory to sucessfully use the new kernel. 
 
 To test our own system call is okay, we need to replace the new compiled kernel with old ones.  But some minor errors would cause the new kernel to crash. So I recommend to download another new image from course website to do the following experiments.
