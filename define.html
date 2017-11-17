@@ -268,14 +268,14 @@ Now, let&#x2019;s define our system call in &#x2018;<strong>listProcessInfo.c</s
 #include &quot;processInfo.h&quot;
 asmlinkage long sys_listProcessInfo(void) {
 
-    //The task_struct structure stores all the details of every process that exists in the system, 
-    //and all the processes in turn are stored in a circular double linked list. 
+    /*The task_struct structure stores all the details of every process that exists in the system, 
+    and all the processes in turn are stored in a circular double linked list.*/ 
     struct task_struct *proces; 
 
 
-    //for_each_process is a macro, it will iterate through the list of all the processes.
+    /*for_each_process is a macro, it will iterate through the list of all the processes.*/
     for_each_process(proces) {
-      //printk is a function that prints messages exclusively for the Linux Kernel.
+      /*printk is a function that prints messages exclusively for the Linux Kernel.*/
       printk(
         &quot;Process: %s\n \
          PID_Number: %ld\n \
@@ -356,7 +356,7 @@ asmlinkage long sys_listProcessInfo(void) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4 Defining our system call","level":"1.5","depth":1,"next":{"title":"5 Modifying necessary kernel files","level":"1.6","depth":1,"path":"modify.md","ref":"modify.md","articles":[]},"previous":{"title":"3 Download latest kernel source code","level":"1.4","depth":1,"path":"downloadsource.md","ref":"downloadsource.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"define.md","mtime":"2017-11-17T07:07:41.166Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-17T07:11:20.291Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"4 Defining our system call","level":"1.5","depth":1,"next":{"title":"5 Modifying necessary kernel files","level":"1.6","depth":1,"path":"modify.md","ref":"modify.md","articles":[]},"previous":{"title":"3 Download latest kernel source code","level":"1.4","depth":1,"path":"downloadsource.md","ref":"downloadsource.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"define.md","mtime":"2017-11-17T07:19:53.318Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-17T07:20:00.669Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
