@@ -1,6 +1,6 @@
 # Download and extract the latest kernel source 
 
-Go to [kernel.org](https://www.kernel.org/) and download the latest stable version (**4.13.11**) into **/media/Newdisk**. 
+Go to [kernel.org](https://www.kernel.org/) and download the latest kernel source code version (**4.13.11**) into **/media/Newdisk**. 
 ```
 cd /media/Newdisk
 wget https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.13.11.tar.xz

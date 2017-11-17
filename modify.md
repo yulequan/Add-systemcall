@@ -31,7 +31,7 @@ find -name syscall_32.tbl   ### Should show the file's location
 
 In kernel 4.13.11, it is present in **/arch/x86/entry/syscalls/syscall_32.tbl**.
 
-Now, edit the file as shown to include the new system call number and its entry point. Just note the system call number for reference. (Ideally, we should be implementing a wrapper for our system call and will never be using the number directly. But, in this example, we will going to use the system call number to test the system call)
+Now, edit the file as shown to include the new system call number and its entry point. Just note the system call number for reference. (Ideally, we should implement a wrapper for our system call so that users can invoke this new sys call by a function name.  But, in this example, we skip this and users will need to invoke this new sys call through the sys call number.)
 
 The number of the system call should be one plus the number of the last system call (it was 385 in our case). 
 ```

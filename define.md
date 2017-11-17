@@ -1,5 +1,7 @@
 # Defining our system call
 
+Okay, we will define our own system call now. This new system call will print the current process info and its parent process info (if any) into the kernel org. 
+
 Create a new directory, say '**info**' and change to this directory. We'll maintain the necessary header file(s) and implementation file(s) for the system call in this directory.
 ```
 mkdir info
@@ -7,7 +9,7 @@ cd info
 ```
 Create a header file '**processInfo.h**' that will contain the necessary function declarations, structure declarations, macros, etc. For this example, we will only be using it to declare the function prototype.
 
-Include the following line in the header file. Here, [asmlinkage](https://www.quora.com/Linux-Kernel-What-does-asmlinkage-mean-in-the-definition-of-system-calls) tells the compiler to look at the CPU’s stack for the function parameters, and [long](https://stackoverflow.com/questions/20940212/why-is-linux-syscall-return-type-long) is generally used as a return type in kernel space for functions that return an int in user space.
+Include the following line in the header file. Here, [asmlinkage](https://www.quora.com/Linux-Kernel-What-does-asmlinkage-mean-in-the-definition-of-system-calls) tells the compiler to look at the CPU’s stack for the function parameters.
 ```
 asmlinkage long sys_listProcessInfo(void);
 ```
@@ -20,39 +22,41 @@ Now, let’s define our system call in ‘**listProcessInfo.c**’.
 #include<linux/syscalls.h>
 #include "processInfo.h"
 asmlinkage long sys_listProcessInfo(void) {
-    struct task_struct *proces;
- 
-    for_each_process(proces) {
- 
-    printk(
-      "Process: %s\n \
-       PID_Number: %ld\n \
-       Process State: %ld\n \
-       Priority: %ld\n \
-       RT_Priority: %ld\n \
-       Static Priority: %ld\n \
-       Normal Priority: %ld\n", \
-       proces->infcomm, \
-       (long)task_pid_nr(proces), \
-       (long)proces->state, \
-       (long)proces->prio, \
-       (long)proces->rt_priority, \
-       (long)proces->static_prio, \
-       (long)proces->normal_prio \
-    );ls
+    
+    //The task_struct structure stores all the details of every process that exists in the system, 
+    //and all the processes in turn are stored in a circular double linked list. 
+    struct task_struct *proces; 
 
-  
-  
-   if(proces->parent) 
+ 
+    //for_each_process is a macro, it will iterate through the list of all the processes.
+    for_each_process(proces) {
+      //printk is a function that prints messages exclusively for the Linux Kernel.
       printk(
+        "Process: %s\n \
+         PID_Number: %ld\n \
+         Process State: %ld\n \
+         Priority: %ld\n \
+         RT_Priority: %ld\n \
+         Static Priority: %ld\n \
+         Normal Priority: %ld\n", \
+         proces->infcomm, \
+         (long)task_pid_nr(proces), \
+         (long)proces->state, \
+         (long)proces->prio, \
+         (long)proces->rt_priority, \
+         (long)proces->static_prio, \
+         (long)proces->normal_prio \
+     );
+     
+     if(proces->parent) 
+       printk(
         "Parent process: %s, \
          PID_Number: %ld", \ 
          proces->parent->comm, \
          (long)task_pid_nr(proces->parent) \
-      );
+       );
   
-   printk("\n\n");
-  
+     printk("\n\n");
   }
   
   return 0;

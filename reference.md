@@ -4,3 +4,4 @@
 * [Implementing a system call in Linux Kernel 4.7.1](https://medium.com/@ssreehari/implementing-a-system-call-in-linux-kernel-4-7-1-6f98250a8c38)
 * [Adding a Hello World System Call to Linux kernel 3.16.0](https://tssurya.wordpress.com/2014/08/19/adding-a-hello-world-system-call-to-linux-kernel-3-16-0/)
 
+* [Using "for_each_process" in proc entry](http://tuxthink.blogspot.hk/2011/03/using-foreachprocess-in-proc-entry.html)

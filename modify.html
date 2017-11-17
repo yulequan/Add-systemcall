@@ -133,7 +133,7 @@
                 <a href="downloadsource.html">
             
                     
-                    3 Down latest kernel source code
+                    3 Download latest kernel source code
             
                 </a>
             
@@ -185,7 +185,7 @@
                 <a href="test.html">
             
                     
-                    7 Testing the system call 
+                    7 Testing our new system call 
             
                 </a>
             
@@ -267,7 +267,7 @@ A neat way to figure out where this file is present is to use the <code>find</co
 <pre><code>find -name syscall_32.tbl   ### Should show the file&apos;s location
 </code></pre><p>(This is equivalent to using the find option(ctrl+F) in nautilus to look for where a specific file is located)</p>
 <p>In kernel 4.13.11, it is present in <strong>/arch/x86/entry/syscalls/syscall_32.tbl</strong>.</p>
-<p>Now, edit the file as shown to include the new system call number and its entry point. Just note the system call number for reference. (Ideally, we should be implementing a wrapper for our system call and will never be using the number directly. But, in this example, we will going to use the system call number to test the system call)</p>
+<p>Now, edit the file as shown to include the new system call number and its entry point. Just note the system call number for reference. (Ideally, we should implement a wrapper for our system call so that users can invoke this new sys call by a function name.  But, in this example, we skip this and users will need to invoke this new sys call through the sys call number.)</p>
 <p>The number of the system call should be one plus the number of the last system call (it was 385 in our case). </p>
 <pre><code>380    i386    pkey_mprotect        sys_pkey_mprotect
 381    i386    pkey_alloc        sys_pkey_alloc
@@ -326,7 +326,7 @@ A neat way to figure out where this file is present is to use the <code>find</co
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"5 Modifying necessary kernel files","level":"1.6","depth":1,"next":{"title":"6 Compile the kernel","level":"1.7","depth":1,"path":"compile.md","ref":"compile.md","articles":[]},"previous":{"title":"4 Defining our system call","level":"1.5","depth":1,"path":"define.md","ref":"define.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"modify.md","mtime":"2017-11-07T06:36:42.591Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-07T11:46:39.708Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"5 Modifying necessary kernel files","level":"1.6","depth":1,"next":{"title":"6 Compile the kernel","level":"1.7","depth":1,"path":"compile.md","ref":"compile.md","articles":[]},"previous":{"title":"4 Defining our system call","level":"1.5","depth":1,"path":"define.md","ref":"define.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"modify.md","mtime":"2017-11-17T07:09:37.278Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-17T07:11:20.291Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

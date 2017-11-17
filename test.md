@@ -40,6 +40,6 @@ dmesg   ### Check the kernel log to which we print the process info
 
 And with that, we have successfully implemented a working system call that actually uses one of the internal kernel data structures!
 
-_Note: The system call implemented does not take care of privilege checks, does not return any error codes on failure and does not do anything particularly useful for the user. So, it is actually far from being a well-designed system call! But, …_
+_Note: The system call implemented does not take care of privilege checks, does not return any error codes on failure and does not do anything particularly useful for the user. So, it is actually far from being a well-designed system call! But, you have finished the first step into Linux kernel_
 
 
