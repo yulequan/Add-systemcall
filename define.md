@@ -24,14 +24,14 @@ Now, let’s define our system call in ‘**listProcessInfo.c**’.
 #include "processInfo.h"
 asmlinkage long sys_listProcessInfo(void) {
     
-    //The task_struct structure stores all the details of every process that exists in the system, 
-    //and all the processes in turn are stored in a circular double linked list. 
+    /*The task_struct structure stores all the details of every process that exists in the system, 
+    and all the processes in turn are stored in a circular double linked list. */
     struct task_struct *proces; 
 
  
-    //for_each_process is a macro, it will iterate through the list of all the processes.
+    /*for_each_process is a macro, it will iterate through the list of all the processes.*/
     for_each_process(proces) {
-      //printk is a function that prints messages exclusively for the Linux Kernel.
+      /*printk is a function that prints messages exclusively for the Linux Kernel.*/
       printk(
         "Process: %s\n \
          PID_Number: %ld\n \
