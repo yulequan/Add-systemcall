@@ -1,6 +1,6 @@
 # Defining our system call
 
-Okay, we will define our own system call now. This new system call will print the current process info and its parent process info (if any) into the kernel org. 
+Okay, we will define our own system call now. This new system call will print the current process info and its parent process info (if any) into the kernel log. 
 
 Create a new directory, say '**info**' and change to this directory. We'll maintain the necessary header file(s) and implementation file(s) for the system call in this directory.
 ```
