@@ -39,7 +39,7 @@ asmlinkage long sys_listProcessInfo(void) {
          RT_Priority: %ld\n \
          Static Priority: %ld\n \
          Normal Priority: %ld\n", \
-         proces->infcomm, \
+         proces->comm, \
          (long)task_pid_nr(proces), \
          (long)proces->state, \
          (long)proces->prio, \
