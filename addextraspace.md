@@ -5,6 +5,14 @@ We also need to increase the CPU memory to sucessfully use the new kernel.
 
 To test our own system call is okay, we need to replace the new compiled kernel with old ones.  But some minor errors would cause the new kernel to crash. So I recommend to download another new image from course website to do the following experiments.
 
+
+## Increase CPU memory 
+
+Open the setting of our VM image. Select "System" item and change the base Memory to 2048MB.
+
+![set9](./figs/memory.png)
+
+
 ## Add extra disk in the VirtualBox setting
 
 1. Open the setting of our machine image. Select "Storage" item and next select "Controller:SATA" item.
@@ -71,10 +79,4 @@ Then this new disk is mounted to '/media/Newdisk' and you can use `df -h` to sho
 
 Note: Everytime when you reboot the system, you need to re-mount this disk again. If you want to permanently mount it. You can refer [this link](https://askubuntu.com/questions/125257/how-do-i-add-an-additional-hard-drive)
 
-
-## Increase CPU memory 
-
-Open the setting of our VM image. Select "System" item and change the base Memory to 2048MB.
-
-![set9](./figs/memory.png)
 
